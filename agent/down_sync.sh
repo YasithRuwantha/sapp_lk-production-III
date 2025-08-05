@@ -1,0 +1,1 @@
+sudo rsync -avL --progress -e "ssh -i '/Users/sugunan/Documents/key/sapp_web.pem'" ubuntu@52.73.169.175:/mnt/www/disk2/git/venera/vendor/ /Users/sugunan/Documents/www/s3/sapp/vendor/

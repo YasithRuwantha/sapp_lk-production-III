@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+	<title>Kanakku - Documentation</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#sidebar-menu" data-offset="100">
+	<div class="main-wrapper">
+		<div class="sidebar" id="sidebar">
+			<div class="sidebar-logo">
+				<a href="">
+					<img src="assets/img/logo.png" class="img-fluid" alt="">
+				</a>
+			</div>
+			<div class="sidebar-inner sidebar-sticky">
+				<div id="sidebar-menu" class="sidebar-menu sidebar-body">
+					<ul class="nav nav-sidebar">
+						<li class="nav-item">
+							<a class="nav-link" href="#introduction">Introduction</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#get-started">Installation</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#requirements">Requirements</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#file_structure">File Structure</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#html_structure">Html Structure</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#css_files_and_structure">CSS Files and Structure</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#scripts">Scripts</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#file_configuration">File Configuration</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#credits">Credits</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#support">Support</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="page-wrapper" id="introduction">
+			<div class="content container-fluid">
+				<div class="page-header">
+					<div class="card">
+						<div class="card-body">
+							<h2>Documentation</h2>
+							<p class="lead mb-0"><strong>Kanakku</strong> - Bootstrap Admin HTML Template</p>
+						</div>
+					</div>
+				</div>
+				<section>
+					<h3>Introduction</h3>
+					<ul>
+						<li>Created on: 17 November 2020</li>
+						<li>Developed by: <a target="_blank" href="https://dreamguys.co.in/">DreamGuy's Technologies</a>
+						</li>
+						<li>Support via email: <a href="mailto:admin@dreamguys.co.in">business@dreamguys.co.in</a>
+						</li>
+						<li>Support via Themeforest: <a target="_blank" href="https://themeforest.net/user/dreamguys/">Take me there</a>
+						</li>
+					</ul>
+					<p>Kanakku is a well designed fully responsive admin template that makes the web administration process easier than ever. It is equipped with various functionalities and is platform compatible</p>
+				</section>
+				<section id="get-started">
+					<h3>Installation Guide</h3>
+					<ul>
+						<li>After unzipping Template Files, you will find our product Kanakku-&gt;HTML(Source code), Documentationin the following Main Files folder.</li>
+						<li>Open HTML folder, copy all files and paste in your localhost or server root folder. Now you can run this Template in any web browser from your PC or Laptop.</li>
+					</ul>
+					<p><strong>For example:</strong>
+						<br>localhost/Kanakku/index.html or www.example.com/index.html</p>
+				</section>
+				<section id="requirements">
+					<h3>Requirements</h3>
+					<p>Working with our Kanakku product, before going to edit all the HTML, CSS and JS files you will need a text editor.</p>
+					<p>In this case, we recommended the <strong>Sublime Text 3 editor or Notepad++</strong> as it allows you to edit the files efficiently and all the editable files are located in "Kanakku-&gt;HTML" folder.</p>
+				</section>
+				<section id="browser">
+					<h3>Browser Support</h3>
+					<p>Kanakku HTML template is built to work best in the latest desktop and mobile and tablet browsers</p>
+					<ul>
+						<li>Chrome (latest)</li>
+						<li>FireFox (latest)</li>
+						<li>Safari (latest)</li>
+						<li>Opera (latest)</li>
+						<li>Edge</li>
+					</ul>
+				</section>
+				
+				<section id="file_structure">
+					<h3>File Structure</h3>
+					<p>Extract the zip file you received after purchase and you would find the exact below files and folders:</p>
+<pre>Kanakku/
+  ├── html/                             // All HTML files 
+  │   	├── assets/                     // All css, js, Image into this folder
+  │   	   ├── css/                     // All css files are here
+  │   	   ├── fonts/                   // All fonts into this folder
+  │   	   ├── img/                     // All images into this folder
+  │   	   ├── js/                      // All js into this folder
+  │   	   ├── plugins/                 // Third party plugins into this folder
+  │  	 ├── index.html                 // Main index page
+  │  	 ├── rest of the html pages     // Remaining html pages
+  ├── documentation/                    // Documentation files
+  
+</pre>
+				</section>
+				
+				<section id="html_structure">
+					<h3>Html Structure</h3>
+					<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"&gt;
+  &lt;title&gt;Kanakku&lt;/title&gt;
+  &lt;link rel="shortcut icon" href="assets/img/favicon.png"&gt;
+  &lt;link rel="stylesheet" href="assets/css/bootstrap.min.css"&gt;
+  &lt;link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css"&gt;
+  &lt;link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css"&gt;
+  &lt;link rel="stylesheet" href="assets/css/style.css"&gt;
+&lt;/head&gt;
+  &lt;body&gt;
+	&lt;div class="main-wrapper"&gt;
+	   &lt;header&gt;
+	   &lt;/header&gt;
+	   &lt;div class="sidebar" id="sidebar"&gt;
+	   &lt;/div&gt;
+	   &lt;div class="page-wrapper"&gt; 
+		&lt;div class="content container-fluid"&gt;
+		&lt;/div&gt;
+	   &lt;/div&gt; 
+	 &lt;/div&gt; 
+	&lt;script src="assets/js/jquery-3.5.1.min.js"&gt;&lt;/script&gt;
+	&lt;script src="assets/js/popper.min.js"&gt;&lt;/script&gt;
+	&lt;script src="assets/plugins/bootstrap/js/bootstrap.min.js"&gt;&lt;/script&gt;
+	&lt;script src="assets/js/feather.min.js"&gt;&lt;/script&gt;
+	&lt;script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"&gt;&lt;/script&gt;  
+	&lt;script src="assets/plugins/apexchart/apexcharts.min.js"&gt;&lt;/script&gt;  
+	&lt;script src="assets/plugins/apexchart/chart-data.js"&gt;&lt;/script&gt;
+	&lt;script src="assets/js/script.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+				</section>
+				
+				
+		<section id="css_files_and_structure" class="custom-card">
+            <div class="page-header">
+                <h3>CSS files and structure</h3>
+                <hr class="notop">
+            </div>
+			
+			
+            <p>
+                Our external styles files are seperated on <b>css and plugins</b> folders on the <strong>assets</strong>. Below the example css plugin lists</p>
+					<h3>Styles</h3>
+<pre><code>&lt;link rel="stylesheet" href="assets/css/bootstrap.min.css"&gt;
+&lt;link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css"&gt;
+&lt;link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css"&gt;  
+&lt;link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css"&gt;  
+&lt;link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css"&gt;  
+&lt;link rel="stylesheet" href="assets/plugins/jvectormap/jquery-jvectormap-2.0.3.css"&gt; 
+&lt;link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css"&gt; 
+&lt;link rel="stylesheet" href="assets/css/style.css"&gt;
+</code></pre>
+					<p>We have used this stylesheet for this template. You can customize the style.css</p>
+            <ul>
+                <li>Bootstrap CSS</li>
+                <li>Bootstrap Datetime Picker CSS</li>
+                <li>Font Awesome CSS</li>
+                <li>Select2 CSS</li>
+                <li>Datatables CSS</li>
+                <li>Fullcalendar CSS</li>
+                <li>jvectormap CSS</li>
+                <li>Slimscroll CSS etc...</li>
+            </ul>
+            <p>
+                And our template have its custom <strong>CSS&nbsp;</strong>files name <strong>admin.css</strong> which is on css folder of root directory.</p>
+                <p>Below some code example of admin.css</p>
+            <pre>
+/*============================
+ [Table of CSS]
+
+1. General
+2. Table
+3. Helper Class
+4. Bootstrap Classes
+5. Modal
+6. Select2
+7. Nav Tabs
+8. Components
+9. Header
+10. Chat
+11. Search
+12. Sidebar
+13. Calendar
+14. Inbox
+15. Mail View
+16. Error
+17. Content
+18. Login
+19. Notifications
+20. Dashboard
+21. Invoices
+22. Settings
+23. Switch Buttons
+24. Profile
+25. Responsive
+
+========================================*/</pre>
+
+<pre class="prettyprint lang-css linenums">
+/*-----------------
+	1. General
+-----------------------*/
+
+@font-face {
+	font-family: 'CircularStd';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Circular Std Book'), url('../fonts/CircularStd-Book.woff') format('woff');
+}
+@font-face {
+	font-family: 'CircularStd';
+	font-style: italic;
+	font-weight: 400;
+	src: local('Circular Std Book Italic'), url('../fonts/CircularStd-BookItalic.woff') format('woff');
+}
+@font-face {
+	font-family: 'CircularStd';
+	font-style: normal;
+	font-weight: 500;
+	src: local('Circular Std Medium'), url('../fonts/CircularStd-Medium.woff') format('woff');
+}
+@font-face {
+	font-family: 'CircularStd';
+	font-style: italic;
+	font-weight: 500;
+	src: local('Circular Std Medium Italic'), url('../fonts/CircularStd-MediumItalic.woff') format('woff');
+}
+@font-face {
+	font-family: 'CircularStd';
+	font-style: normal;
+	font-weight: 600;
+	src: local('Circular Std Bold'), url('../fonts/CircularStd-Bold.woff') format('woff');
+}
+@font-face {
+	font-family: 'CircularStd';
+	font-style: italic;
+	font-weight: 600;
+	src: local('Circular Std Bold Italic'), url('../fonts/CircularStd-BoldItalic.woff') format('woff');
+}
+@font-face {
+	font-family: 'CircularStd';
+	font-style: normal;
+	font-weight: 800;
+	src: local('Circular Std Black'), url('../fonts/CircularStd-Black.woff') format('woff');
+}
+@font-face {
+	font-family: 'CircularStd';
+	font-style: italic;
+	font-weight: 800;
+	src: local('Circular Std Black Italic'), url('../fonts/CircularStd-BlackItalic.woff') format('woff');
+}
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../fonts/MaterialIcons-Regular.eot);
+	/* For IE6-8 */
+	src: local('Material Icons'), local('MaterialIcons-Regular'), url(../fonts/MaterialIcons-Regular.woff2) format('woff2'), url(../fonts/MaterialIcons-Regular.woff) format('woff'), url(../fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+html {
+	height: 100%;
+}
+body {
+	background-color: #f7f8f9;
+	color: #455560;
+	font-family: 'CircularStd', sans-serif;
+	font-size: 0.9375rem;
+	height: 100%;
+	line-height: 1.5;
+	overflow-x: hidden;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'CircularStd', sans-serif;
+	margin-top: 0;
+	color: #2c3038;
+}
+a:hover,
+a:active,
+a:focus {
+	outline: none;
+	text-decoration: none;
+}
+</pre>
+</section>
+
+				<section id="scripts">
+					<h3>Javascripts</h3>
+<pre><code>&lt;script src="assets/js/jquery-3.5.1.min.js"&gt;&lt;/script&gt;
+&lt;script src="assets/js/popper.min.js"&gt;&lt;/script&gt;
+&lt;script src="assets/js/bootstrap.min.js"&gt;&lt;/script&gt;  
+&lt;script src="assets/js/feather.min.js"&gt;&lt;/script&gt;  
+&lt;script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"&gt;&lt;/script&gt;  
+&lt;script src="assets/plugins/select2/js/select2.min.js"&gt;&lt;/script&gt;  
+&lt;script src="assets/plugins/datatables/datatables.min.js"&gt;&lt;/script&gt;  
+&lt;script src="assets/plugins/moment/moment.min.js"&gt;&lt;/script&gt;  
+&lt;script src="assets/plugins/fullcalendar/fullcalendar.min.js"&gt;&lt;/script&gt;  
+&lt;script src="assets/plugins/fullcalendar/jquery.fullcalendar.js"&gt;&lt;/script&gt;  
+&lt;script src="assets/js/script.js"&gt;&lt;/script&gt;
+</code></pre>
+<p>We have used this javascript for this template. You can customize the scripts.css</p>
+				</section>
+
+				<section id="file_configuration">
+					<h3>File Configuration</h3>
+					<h4>How to change Logo ? </h4>
+					<p>You can change the logo or replace it from images folder or you can edit it from HTML file.</p>
+<pre><code>&lt;div class="header-left"&gt;
+  &lt;a href="index.html" class="logo"&gt;
+	&lt;img src="assets/img/logo.png" alt="Logo"&gt;
+  &lt;/a&gt;
+  &lt;a href="index.html" class="logo logo-small"&gt;
+    &lt;img src="assets/img/logo-small.png" alt="Logo" width="30" height="30"&gt;
+  &lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+
+							<h4>How to change Header background color ? </h4>
+							<p>You can change the header background color in style.css as per your wish</p>
+							<p><img src="assets/img/header_color.jpg" alt=""></p>
+							
+
+					<h4>How to change Theme Font ? </h4>
+					<p>Go to style.css and line number 42 to 97. Here we have the default font family CircularStd</p>
+<pre><code>@font-face {
+	font-family: 'CircularStd';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Circular Std Book'), url('../fonts/CircularStd-Book.woff') format('woff');
+}
+@font-face {
+	font-family: 'CircularStd';
+	font-style: italic;
+	font-weight: 400;
+	src: local('Circular Std Book Italic'), url('../fonts/CircularStd-BookItalic.woff') format('woff');
+}
+@font-face {
+	font-family: 'CircularStd';
+	font-style: normal;
+	font-weight: 500;
+	src: local('Circular Std Medium'), url('../fonts/CircularStd-Medium.woff') format('woff');
+}
+@font-face {
+	font-family: 'CircularStd';
+	font-style: italic;
+	font-weight: 500;
+	src: local('Circular Std Medium Italic'), url('../fonts/CircularStd-MediumItalic.woff') format('woff');
+}
+@font-face {
+	font-family: 'CircularStd';
+	font-style: normal;
+	font-weight: 600;
+	src: local('Circular Std Bold'), url('../fonts/CircularStd-Bold.woff') format('woff');
+}
+@font-face {
+	font-family: 'CircularStd';
+	font-style: italic;
+	font-weight: 600;
+	src: local('Circular Std Bold Italic'), url('../fonts/CircularStd-BoldItalic.woff') format('woff');
+}
+@font-face {
+	font-family: 'CircularStd';
+	font-style: normal;
+	font-weight: 800;
+	src: local('Circular Std Black'), url('../fonts/CircularStd-Black.woff') format('woff');
+}
+@font-face {
+	font-family: 'CircularStd';
+	font-style: italic;
+	font-weight: 800;
+	src: local('Circular Std Black Italic'), url('../fonts/CircularStd-BlackItalic.woff') format('woff');
+}
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../fonts/MaterialIcons-Regular.eot);
+	/* For IE6-8 */
+	src: local('Material Icons'), local('MaterialIcons-Regular'), url(../fonts/MaterialIcons-Regular.woff2) format('woff2'), url(../fonts/MaterialIcons-Regular.woff) format('woff'), url(../fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+</code></pre>
+
+	<h5 class="card-title mt-4">if you want use google fonts?</h5>
+	<p>Google font must be loaded in HTML Head before other CSS files.<br>
+
+		Font code example:</p>
+		<pre><span class="tag">&lt;link</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"https://fonts.googleapis.com/css?family=Lato:400,700,900&amp;display=swap"</span><span class="pln"> </span><span class="atn">rel</span><span class="pun">=</span><span class="atv">"stylesheet"</span><span class="tag">&gt;</span></pre>
+	<p class="no-m">Our template also uses Material Icons and Fontawesome icons.</p>
+				</section>
+				
+
+								
+				<section id="credits">
+					<h3>Credits</h3>
+					<p>We've used the following resources as listed. These are some awesome creation and we are thankful to the community.</p>
+					<ul>
+						<li><a target="_blank" href="http://getbootstrap.com/">Bootstrap</a></li>
+						<li><a target="_blank" href="https://jquery.com/">Jquery</a></li>
+						<li><a target="_blank" href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a></li>
+						<li><a target="_blank" href="https://github.com/Eonasdan/bootstrap-datetimepicker">Date Timepicker</a></li>
+						<li><a target="_blank" href="http://www.google.com/fonts">Google Fonts</a></li>
+						<li><a target="_blank" href="https://jqueryui.com/">Jquery UI</a></li> 
+						<li><a target="_blank" href="https://popper.js.org/">Popper JS</a></li>
+						<li><a target="_blank" href="https://apexcharts.com/">Apexcharts</a></li>
+						<li><a target="_blank" href="https://select2.org/">Select2</a></li>
+						<li><a target="_blank" href="https://fullcalendar.io/">Full Calendar</a></li>
+						<li><a target="_blank" href="https://datatables.net/">Datatables</a></li>
+						<li><a target="_blank" href="https://momentjs.com/">Moment JS</a></li>
+					</ul>
+				</section>
+				<section id="support" class="mb-0">
+					<h3>Support</h3>
+					<p class="mb-0">If you have any queries please contact us through email: <strong>business@dreamguys.co.in</strong>
+					</p>
+				</section>
+			</div>
+		</div>
+	</div>
+	<script src="assets/js/jquery-3.5.0.min.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/script.js"></script>
+</body>
+
+</html>

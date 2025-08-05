@@ -1,0 +1,62 @@
+SELECT u.pin AS 'NIC Number', u.fname AS 'First Name', u.lname AS 'Last Name', u.mobile AS 'Mobile', u.email AS 'Email', u.dob AS 'Date of Birth', IF(u.gender<2, "Male", "Female") AS 'Gender',  
+IF(f.barrower_type<2, "Main", "Sub") AS 'Barrower Type', f.head_hh AS 'Head of Household', f.address_no AS 'Address 01', f.address_street AS 'Address 02', f.address_city AS 'Address 03', 
+p.project_name AS 'Project Name', bd.bank_code AS "Account No", bd.branch AS "Branch Name", b.bank AS "Bank Name", bd.bank_code AS "Bank Code", fp.contribution AS "Farmer Contribution",
+fp.purpose AS "Purpose of Assistance",
+CASE
+    WHEN f.vcm_recomendation = 1 THEN "Approved"
+    WHEN f.vcm_recomendation = 2 THEN "Rejected"
+    WHEN f.vcm_recomendation = 3 THEN "Pending"
+END AS "Recommendation by VCM",
+f.vcm_recomendation_remark AS "VCM Remarks", f.vcm_approval_date_time AS "Date of VCM Approval", 
+CASE
+    WHEN f.rpc_recomendation = 1 THEN "Approved"
+    WHEN f.rpc_recomendation = 2 THEN "Rejected"
+    WHEN f.rpc_recomendation = 3 THEN "Pending"
+END AS "Recommendation by RPC",
+f.rpc_recomendation_remark AS "RPC Remarks", f.rpc_approval_date_time AS "Date of RPC Approval",
+CASE
+    WHEN f.liason_recomendation = 1 THEN "Approved"
+    WHEN f.liason_recomendation = 2 THEN "Rejected"
+    WHEN f.liason_recomendation = 3 THEN "Pending"
+END AS "Recommendation by Liason Officer",
+f.liason_recomendation_remark AS "Remarks by Liason Officer", f.liason_approval_date_time AS "Date of Liason Officer Approval", 
+CASE
+    WHEN f.liason_recomendation = 1 THEN "Ongoing"
+    WHEN f.liason_recomendation = 2 THEN "Planned"
+    WHEN f.liason_recomendation = 3 THEN "Completed"
+    WHEN f.liason_recomendation = 4 THEN "Suspended"
+END AS "Status on Project", 
+fp.pfi_ref_no AS "PFI Number", 
+CASE
+    WHEN fp.obtained_benifit = 1 THEN "Loan"
+    WHEN fp.obtained_benifit = 2 THEN "Grant"
+END AS "Obtained Benefit", 
+f.whatsapp_no AS "WhatsApp No", CONCAT ('attom:35:',f.citizenship_by) AS "Citizenship By", CONCAT ('attom:5:',f.heighest_education_qualification) AS "Heighest Education Qualification", CONCAT ('attom:36:',f.availability_drinking_water) AS "Availability of Drinking Water", 
+CASE
+    WHEN f.source_drinking_water = 1 THEN "Well"
+    WHEN f.source_drinking_water = 2 THEN "Pipe"
+    WHEN f.source_drinking_water = 3 THEN "Public tap"
+    WHEN f.source_drinking_water = 4 THEN "Tube wells"
+    WHEN f.source_drinking_water = 5 THEN "lake pond"
+    WHEN f.source_drinking_water = 6 THEN "River Stream"
+    WHEN f.source_drinking_water = 7 THEN "Tap water (Main)"
+    WHEN f.source_drinking_water = 8 THEN "Tap water (other)"
+END AS "Source of Drinking Water", 
+CONCAT ('attom:37:',f.availability_water_crops) AS "Availability of water for Crops", CONCAT ('json:11:',f.source_water_crops) AS "Source of Water for Crops", CONCAT ('json:12:',f.cond_house_floor) AS "Condition of House floor", 
+CONCAT ('json:13:',f.consumer_durables) AS "Consumer Durables", CONCAT ('json:14:',f.avilability_vehicles) AS "Availability of Vehicles", CONCAT ('json:15:',f.sanitation) AS "Sanitation Facility", CONCAT ('json:16:',f.agri_equipments) AS "Available Agriculture Equipments", 
+CONCAT ('json:9:',f.tools_farmland) AS "Available Tools for Farmland", CONCAT ('attom:17:',f.main_source_income) AS "Main Source of Income", CONCAT ('attom:7:',f.main_source_income_nature) AS "Nature of Main Income source", f.avg_main_agriculture_income AS "Avg. Main Source income (Agriculture)",
+CONCAT ('attom:7:',f.avg_main_agricultutre_income_nature) AS "Nature of Agriculture Income", f.avg_harvest_income AS "Avg Harvesting Income", f.other_income AS "Other Income", CONCAT ('json:7:',f.other_income_nature) AS "Nature of Other Income",
+f.other_income_discription AS "Description of Other Income sources", CONCAT ('attom:36:',f.availability_electricity) AS "Aavailability of Electricity", CONCAT ('attom:8:',f.electricity_from) AS "Electricity From"
+FROM user AS u 
+LEFT JOIN file_registry AS fr ON fr.id = u.profile_picture 
+LEFT JOIN farmer AS f ON f.user_id = u.id 
+LEFT JOIN farmer_project AS fp ON fp.farmer_id = u.id 
+LEFT JOIN project AS p ON fp.project_id = p.id 
+LEFT JOIN link_disbursement_farmer AS ldf ON ldf.user_id = u.id 
+LEFT JOIN loan_disbursement AS ld ON ldf.loan_disbursement_id = ld.id 
+LEFT JOIN loan AS l ON ld.loan_id = l.id 
+LEFT JOIN link_user_bank AS lub ON lub.user_id = u.id 
+LEFT JOIN bank_details AS bd ON bd.id = lub.bank_details_id 
+LEFT JOIN banks AS b ON bd.bank_id = b.id 
+WHERE u.user_type IN (2) AND u.is_delete = 0 
+GROUP BY p.id 

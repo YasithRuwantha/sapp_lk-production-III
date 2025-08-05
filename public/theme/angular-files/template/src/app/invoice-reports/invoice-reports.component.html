@@ -1,0 +1,137 @@
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Invoices</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a [routerLink]="'/'">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Invoices</li>
+                    </ul>
+                </div>
+                <div class="col-auto">
+                    <a [routerLink]="'/add-invoice'" class="btn btn-primary me-1">
+                        <i class="fas fa-plus"></i>
+                    </a>
+                    <a class="btn btn-primary filter-btn" href="javascript:void(0);" id="filter_search">
+                        <i class="fas fa-filter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+   
+        <!-- Search Filter -->
+        <div id="filter_inputs" class="card filter-card">
+            <div class="card-body pb-0">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                        <label>Customer:</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>Status:</label>
+                            <ng-select2  width="100%">
+                                <option>Select Status</option>
+                                <option>Draft</option>
+                                <option>Sent</option>
+                                <option>Viewed</option>
+                                <option>Expired</option>
+                                <option>Accepted</option>
+                                <option>Rejected</option>
+                            </ng-select2>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>From</label>
+                            <div class="cal-icon">
+                                <input type="text" class="form-control" name="dp"  (click)="d1.toggle()" ngbDatepicker #d1="ngbDatepicker">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>To</label>
+                            <div class="cal-icon">
+                                <input type="text" class="form-control" name="dp"  (click)="d.toggle()" ngbDatepicker #d="ngbDatepicker">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Invoice Number</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Search Filter -->
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-table"> 
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-stripped table-hover datatable">
+                                <thead class="thead-light">
+                                    <tr>
+                                       <th>Invoice Number</th>
+                                       <th>Customer Name</th>
+                                       <th>Created Date</th>
+                                       <th>Amount</th>
+                                       <th>Due Date</th>
+                                       <th>Status</th>
+                                       <th>Paid On</th>
+                                       <th class="text-end">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let invoice of invoices">
+                                        <td><a [routerLink]="'/view-invoice'">{{invoice.number}}</a></td>
+                                        <td>
+                                            <h2 class="table-avatar">
+                                                <a [routerLink]="'/profile'"><img class="avatar avatar-sm me-2 avatar-img rounded-circle" src="{{invoice.customer_img}}" alt="User Image">{{invoice.customer_name}}</a>
+                                            </h2>
+                                        </td>
+                                        <td>{{invoice.created_date | date : 'dd MMM yyyy'}}</td>
+                                        <td>{{invoice.amount}}</td>
+                                        <td>{{invoice.due_date | date : 'dd MMM yyyy'}}</td>
+                                        <td>
+                                            <span *ngIf="invoice.status === 'Paid'" class="badge bg-success-light">{{invoice.status}}</span>
+                                            <span *ngIf="invoice.status === 'Sent'" class="badge bg-info-light">{{invoice.status}}</span>
+                                            <span *ngIf="invoice.status === 'Partially Paid'" class="badge bg-warning-light">{{invoice.status}}</span>
+                                            <span *ngIf="invoice.status === 'Overdue'" class="badge bg-danger-light">{{invoice.status}}</span>
+                                        </td>
+                                        <td>{{invoice.paid_on | date : 'dd MMM yyyy hh mm a'}}</td>
+                                        <td class="text-end">
+                                                        <div class="dropdown dropdown-action">
+                                                            <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" [routerLink]="'/edit-invoice'"><i class="far fa-edit me-2"></i>Edit</a>
+                                                                <a class="dropdown-item" [routerLink]="'/view-invoice'"><i class="far fa-eye me-2"></i>View</a>
+                                                                <a class="dropdown-item" href="javascript:void(0);"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                                                                <a class="dropdown-item" href="javascript:void(0);"><i class="far fa-check-circle me-2"></i>Mark as sent</a>
+                                                                <a class="dropdown-item" href="javascript:void(0);"><i class="far fa-paper-plane me-2"></i>Send Invoice</a>
+                                                                <a class="dropdown-item" href="javascript:void(0);"><i class="far fa-copy me-2"></i>Clone Invoice</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Page Wrapper -->

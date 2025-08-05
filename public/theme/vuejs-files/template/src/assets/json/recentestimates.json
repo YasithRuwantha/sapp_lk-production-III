@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "customer_name": " Greg Lynch",
+        "image": "avatar-05.jpg",
+        "amount": "$175",
+        "expiry_date": "5 Nov 2020",
+        "status": "Sent"
+    },
+    {
+        "id": 2,
+        "customer_name": " Karlene Chaidez",
+        "image": "avatar-06.jpg",
+        "amount": "$1500",
+        "expiry_date": "28 Oct 2020",
+        "status": "Expired"
+    },
+    {
+        "id": 3,
+        "customer_name": " John Blair",
+        "image": "avatar-07.jpg",
+        "amount": "$2350",
+        "expiry_date": "17 Oct 2020",
+        "status": "Accepted"
+    },
+    {
+        "id": 4,
+        "customer_name": " Russell Copeland",
+        "image": "avatar-08.jpg",
+        "amount": "$1890",
+        "expiry_date": "8 Oct 2020",
+        "status": "Accepted"
+    },
+    {
+        "id": 5,
+        "customer_name": " Leatha Bailey",
+        "image": "avatar-09.jpg",
+        "amount": "$785",
+        "expiry_date": "30 Sep 2020",
+        "status": "Accepted"
+    }
+]

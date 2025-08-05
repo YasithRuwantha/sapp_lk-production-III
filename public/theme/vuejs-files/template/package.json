@@ -1,0 +1,71 @@
+{
+  "name": "kanakku-vuejs",
+  "version": "1.0.0",
+  "description": "kanakku-vuejs project",
+  "private": true,
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "build": "webpack --env.production",
+    "serve": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "author": "dreamguys technologies",
+  "dependencies": {
+    "apexcharts": "^3.29.0",
+    "bootstrap": "4.5.3",
+    "datatables.net-bs4": "^3.2.2",
+    "datatables.net-dt": "^1.11.3",
+    "feather-icons": "^4.28.0",
+    "file-loader": "^6.2.0",
+    "jquery": "^3.6.0",
+    "moment": "^2.29.1",
+    "npm-force-resolutions": "0.0.10",
+    "popper.js": "^1.16.1",
+    "raphael": "^2.3.0",
+    "sass-loader": "^11.0.1",
+    "vue": "^3.1.5",
+    "vue-custom-scrollbar": "^1.4.1",
+    "vue-morris": "^1.1.0",
+    "vue-router": "^4.0.0-beta.1",
+    "vue-slick": "^1.1.16",
+    "vue-tiny-slider": "^0.1.39",
+    "vue3-apexcharts": "^1.4.1",
+    "vue3-carousel": "^0.1.19",
+    "vue3-perfect-scrollbar": "^1.5.5",
+    "vue3-slide-up-down": "^1.2.4",
+    "vuex": "^4.0.0-beta.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@vue/compiler-sfc": "^3.0.0-beta.18",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.6.0",
+    "dotenv": "^8.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "style-loader": "^1.2.1",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.9.6",
+    "url-loader": "^4.1.1",
+    "vue-loader": "^16.0.0-beta.4",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpackbar": "^4.0.0"
+  },
+  "peerDependencies": {
+    "webpack": "^4.1.0 || ^5.0.0-0"
+  },
+  "resolutions": {
+    "datatables.net": "1.11.3",
+    "nth-check": "2.0.1",
+    "ansi-regex": "5.0.1",
+    "set-value": "4.0.1",
+    "url-parse": "1.5.2",
+    "glob-parent": "5.1.2"
+  }
+}

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		<title>Kanakku - Laravel Documentation</title>
+		
+		<!-- Favicon -->
+        <link rel="shortcut icon" href="assets/img/favicon.png">
+
+		<!-- Styles -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/css/style.css">
+
+	</head>
+
+	<body data-spy="scroll" data-target="#sidebar-menu" data-offset="100">
+		
+		<div class="main-wrapper">
+			<div class="sidebar" id="sidebar">
+				<div class="sidebar-logo">
+					<a href="">
+						<img src="assets/img/logo.png" class="img-fluid" alt="">
+					</a>
+				</div>
+				<div class="sidebar-inner sidebar-sticky">
+					<div id="sidebar-menu" class="sidebar-menu sidebar-body">
+						<ul class="nav nav-sidebar">
+							<li class="nav-item">
+								<a class="nav-link" href="#introduction">Introduction</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#get-started">Laravel Installation</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#requirements">Requirements</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#filestructure">File Structure</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#file_config">File Configuration</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#credits">Credits</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#support">Change Log</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="page-wrapper" id="introduction">
+				<div class="content container-fluid">
+				
+					<div class="page-header">
+						<div class="card">
+							<div class="card-body">
+								<h2>Documentation</h2>
+								<p class="lead mb-0"><strong>Kanakku</strong> - Laravel Admin Template</p>
+							</div>
+						</div>
+					</div>
+					
+					<section>
+						<h3>Introduction</h3>
+						<ul>
+							<li>Created on: 09 DEC 2020</li>
+							<li>Developed by: <a target="_blank" href="https://dreamguys.co.in/">DreamGuy's Technologies</a></li>
+							<li>Support via email: <a href="mailto:admin@dreamguys.co.in">business@dreamguys.co.in</a></li>
+							<li>Support via ThemeForest: <a target="_blank" href="http://themeforest.net/user/dreamguys">Take me there</a></li>
+						</ul>
+						<p><strong>Doccure</strong> template is built with Laravel 7.7.1 with Laravel Mix provides a clean build steps for your Laravel application. Mix supports several common CSS
+							and JavaScript pre-processors. We have also added few reusable components which speedup your
+							development.</p>
+					</section>
+								
+					<section id="get-started">
+						<h3>Laravel Installation</h3>
+						<ul>
+							<li>
+								Open the terminal in your root
+										directory(Doccure_Laravel)
+							</li>
+							<li>
+								To install
+										the composer packages run the following command: <strong>composer install</strong>
+							</li>
+							<li>
+								By running the following command, you
+										will be able to get all the dependencies in
+										your node_modules folder: <strong>npm install</strong>
+							</li>
+							<li>
+								To run the project, you need to run
+										following command in the project directory. It
+										will compile the php files &amp; all the other project files. If you are making
+										any changes in any of the .php
+										file then you need to run the given command again. <strong>npm run dev</strong>
+							</li>
+							<li>
+								To serve the application you need to run
+										the following command in the project
+										directory. (This will give you an address with port number 8000.) Now navigate
+										to the given address you will
+										see your application is running. <strong>php artisan serve</strong>
+							</li>
+							<li>
+								To change the port address, run the following command: <strong>php artisan serve --port=8080 // For port 8080</strong>
+							</li>
+							<li>
+								<strong>Watching for changes:</strong> If you want to watch all the changes you make in the application then run the following command in the root directory. <strong>npm run watch</strong>
+							</li>
+							<li>
+								<strong>Building for Production:</strong> If you want to run the project and make the build in the production mode then run the following command in the root directory, otherwise the project will continue to run in the development mode. <strong>npm run prod</strong>
+							</li>
+							<li>
+								<strong>Required Permissions:</strong> If you are facing any issues regarding the permissions, then you need to run the following command in your project directory: <strong>(a) sudo chmod -R o+rw bootstrap/cache</strong> <strong> (b) sudo chmod -R o+rw storage</strong>
+							</li>
+						</ul>
+					</section>
+					<section id="requirements">
+						<h3>Requirements</h3>
+						<ul>
+							<li>PHP >= 7.2.5</li>
+							<li>Composer</li>
+							<li>Node and Npm</li>
+							<li>Xampp</li>
+							<li>Notepad++ or visual studio or subline text</li>
+						</ul>
+					</section>
+					
+					<section id="filestructure">
+						<h3>File Structure</h3>
+	<pre class="language-markup line-numbers"><code>Kanaku/
+	|--app
+	|--bootstrap
+	| --Cache
+	|--config
+	|--databse
+	|--public
+	 |--assets
+		| --CSS
+		| --fonts
+		| --img
+		| --js						
+	|--resources 
+	  | --views
+		| --layouts
+		  | --partials
+			| --footer-scripts.blade.php 
+			| --head.blade.php 
+			| --header.blade.php
+			| --nav.blade.php
+		| --mainlayout.blade.php
+		|--All pages(project all components included here)
+	|--routes
+	  | --api.php
+	  | --channels.php
+	  | --console.php
+	  | --web.php(All routes called here)
+	|--storage
+	|--tests
+	|--vendor
+	|--editorconfig
+	|--env
+	|--env.example
+	|--styleci.yml
+	|--artisan
+	|--composer.json
+	|--composer.lock
+	|--package.json
+	|--package-lock.json
+	|--phpunit
+	|--README.md
+	|--webpack.mix
+	</code>
+	</pre>
+					</section>
+
+					<section id="file_config">
+						<h3>File Configuration</h3>
+						<h4>How to change Logo ? </h4>
+						<p>You can change the logo or replace it from img folder or you can edit it from HTML file.</p>
+							
+	<pre class="prettyprint lang-html linenums"><code>&lt;div class="navbar-header"&gt;
+	  &lt;a href="index.html" class="navbar-brand logo"&gt;
+		&lt;img src="assets/img/logo.png" class="img-fluid" alt="Logo"&gt;
+	  &lt;/a&gt;
+	&lt;/div&gt;
+	</code></pre>
+							
+						<h4>How to change Header background color ? </h4>
+						<p>You can change the header background color in style.css as per your wish</p>
+						<p><img src="assets/img/header_color_laravel.jpg" alt=""></p>
+					</section>
+					
+					<section id="credits">
+						<h3>Credits</h3>
+						<p>We've used the following resources as listed. These are some awesome creation and we are thankful to the community.</p>
+						<ul>
+							<li><a target="_blank" href="http://getbootstrap.com/">Bootstrap</a></li>
+							<li><a target="_blank" href="https://jquery.com/">Jquery</a></li>
+							<li><a target="_blank" href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a></li>
+							<li><a target="_blank" href="https://select2.github.io/">Select2</a></li>
+							<li><a target="_blank" href="https://github.com/Eonasdan/bootstrap-datetimepicker">Date Timepicker</a></li>
+							<li><a target="_blank" href="http://www.google.com/fonts">Google Fonts</a></li>
+							<li><a target="_blank" href="https://morrisjs.github.io/morris.js/">Morris</a></li>
+							<li><a target="_blank" href="https://summernote.org/">Summernote</a></li>
+							<li><a target="_blank" href="https://www.dropzonejs.com/">Dropzone JS</a></li>
+							<li><a target="_blank" href="https://jqueryui.com/">Jquery UI</a></li>
+							<li><a target="_blank" href="https://fullcalendar.io/">Full Callender</a></li>
+							<li><a target="_blank" href="https://momentjs.com/">Moment JS</a></li>
+							<li><a target="_blank" href="https://popper.js.org/">Popper JS</a></li>
+						</ul>
+					</section>
+					
+					<section id="support">
+						<h3>Change Log</h3>
+						<div>
+							<h5>
+								<span class="text-primary change_log">1.0.0</span>
+								<span class="sub-header change_log"> - 20 June, 2020 </span>
+							</h5>
+							<ul class="changlog-list">
+								<li>
+									Initial Version
+								</li>
+							</ul>
+							<h5 class="change_log">
+								<span class="text-primary">1.0.1</span>
+								<span class="sub-header"> - 22 August, 2020 </span>
+							</h5>
+							<ul class="changlog-list">
+								<li>
+									Second Version
+								</li>
+							</ul>
+							<h5 class="change_log">
+								<span class="text-primary">1.0.2</span>
+								<span class="sub-header"> - 09 December, 2020 </span>
+							</h5>
+							<ul class="changlog-list">
+								<li>
+									Third Version
+								</li>
+							</ul>
+						</div>
+					</section>
+					
+					<section id="support" class="mb-0">
+						<h3>Support</h3>
+						<p class="mb-0">If you have any queries please contact us through email: <strong>business@dreamguys.co.in</strong>
+						</p>
+					</section>
+					
+				</div>
+			</div>
+		</div>
+		
+		<script src="assets/js/jquery-3.5.0.min.js"></script>
+		<script src="assets/js/popper.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/script.js"></script>
+
+	</body>
+</html>

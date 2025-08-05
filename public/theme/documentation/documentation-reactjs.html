@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favcon.png">
+	<title>Kanakku - Documentation</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#sidebar-menu" data-offset="100">
+	<div class="main-wrapper">
+		<div class="sidebar" id="sidebar">
+			<div class="sidebar-logo">
+				<a href="">
+					<img src="assets/img/logo.png" class="img-fluid" alt="">
+				</a>
+			</div>
+			<div class="sidebar-inner sidebar-sticky">
+				<div id="sidebar-menu" class="sidebar-menu sidebar-body">
+					<ul class="nav nav-sidebar">
+						<li class="nav-item">	<a class="nav-link" href="#introduction">Introduction</a>
+						</li>
+						<li class="nav-item">	<a class="nav-link" href="#get-started">Installation</a>
+						</li>
+						<li class="nav-item">	<a class="nav-link" href="#requirements">Requirements</a>
+						</li>
+						<li class="nav-item">	<a class="nav-link" href="#styles">Styles</a>
+						</li>
+						<li class="nav-item">	<a class="nav-link" href="#scripts">Scripts</a>
+						</li>
+						<li class="nav-item">	<a class="nav-link" href="#file_structure">File Structure</a>
+						</li>
+						<li class="nav-item">	<a class="nav-link" href="#credits">Credits</a>
+						</li>
+						<li class="nav-item">	<a class="nav-link" href="#changelog">Change Log</a>
+						</li>
+						<li class="nav-item">	<a class="nav-link" href="#support">Support</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="page-wrapper" id="introduction">
+			<div class="content container-fluid">
+				<div class="page-header">
+					<div class="card">
+						<div class="card-body">
+							<h2>Documentation</h2>
+							<p class="lead mb-0"><strong>Kanakku</strong> - Documentation</p>
+						</div>
+					</div>
+				</div>
+				<section>
+					<h3>Introduction</h3>
+					<ul>
+						<li>Created on: 25th August 2020</li>
+						<li>Developed by: <a target="_blank" href="https://dreamguys.co.in/">DreamGuy's Technologies</a>
+						</li>
+						<li>Support via email: <a href="mailto:admin@dreamguys.co.in">business@dreamguys.co.in</a>
+						</li>
+						<li>Support via Themeforest: <a target="_blank" href="https://themeforest.net/user/dreamguys/">Take me there</a>
+						</li>
+					</ul>
+					<p>Kanakku Template offers you the best template created by the latest version of React ^16.13.1 with super responsive web design.
+					Mix supports several common CSS and JQuery. We have also added few reusable components which speedup your development.</p>
+				</section>
+				<section id="get-started" class="install_require">
+					<div class="section">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">Installation</h4>
+							</div>
+							<div class="card-content">
+								<div class="card-body">
+									<p>Given below are the steps you need to follow, to install the Kanakku Template - React on
+										your system:</p>
+									<p><strong>Step 1: </strong>Open the terminal in your root
+										directory &amp; to create
+										the project run the following command:</p>
+									<div class="prism-show-language"></div>
+									<pre
+										class=" mb-1 language-php"><code class>npx<span class="token space"> </span>create-react-app<span class="token space"> </span>Project_name</code></pre>
+									<!-- step 3 -->
+									<p class="step-3"><strong>Step 2: </strong>By running the following command, you
+										will be able to get all the dependencies in
+										your node_modules folder:</p>
+									<div class="prism-show-language"></div>
+									<pre
+										class=" mb-1 language-php"><code class>npm<span class="token space"> </span>install</code></pre>
+									<!-- step 4 -->
+									<p class="step-4"><strong>Step 3: </strong>To run the project, you need to run
+										following command in the project directory. It
+										will compile the jsx files &amp; all the other project files. If you are making
+										any changes in any of the .jsx file then you need to save the file, it will automatically consider this command and run the entire code.</p>
+									<div class="prism-show-language"></div>
+									<pre
+										class=" mb-1 language-php"><code>npm<span class="token space"> </span>run<span class="token space"> </span>dev</code></pre>
+									<p class="step-5"><strong>Step 4: </strong>To install any plugins in your application, you have to run the following command</p>
+									<div class="prism-show-language"></div>
+									<pre
+										class=" mb-1 language-php"><code class>npm<span class="token space"> </span>install<span class="token space"> </span>plugin_name<span class="token space"> </span>--save</code></pre>
+									
+									<p><strong>Building for Production: </strong>If you want to run the project and make
+										the build in the production
+										mode then run the following command in the root directory, otherwise the project
+										will continue to run in the
+										development mode.</p>
+									<div class="prism-show-language"></div>
+									<pre
+										class=" mb-1 language-php"><code class>npm<span class="token space"> </span>run<span class="token space"> </span>build</code></pre>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<div class="section" id="new-page" class="newpage">
+					<div class="card newpage_card">
+						<div class="card-header">
+							<h4 class="card-title">Create New Page</h4>
+						</div>
+						<div class="card-content">
+							<div class="card-body">
+								<h6>How to add New Page:</h6>
+								<ul class="list-group">
+									<li class="list-group-item">Create New View with <code>index.js</code> extenstion.
+									</li>
+									<li class="list-group-item">Every page of code must be written inside the index.jsx. In this may occure the conflict, so we have to create the folder of new page, inside the folder create the index.jsx file </li>
+									<li class="list-group-item">Set Path in <code>routes/foldername/index.jsx</code> file to serve
+										the page on the browser.
+									</li>
+								</ul>
+								<h6 class="new_page">Steps to add a new page:</h6>
+								<p><strong>Step 1: </strong> Create a file with the extension <code>index.jsx</code>
+									under the
+									<code>src -&gt; routes -&gt; foldername</code> directory. Let's create a testPage
+									for an example with filename
+									testPage/index.jsx and placing the below code in that file.</p>
+								<div class="prism-show-language"></div>
+								<pre class=" mb-1 language-php"><code class>
+import React, { Component } from 'react';
+export default class newPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }	
+  render() {	
+   return (  );
+  }
+}  
+				  </code></pre>
+							
+								<p><strong>Step 2: </strong>
+									After creating file,you need to declare its route where it can be
+									served on the browser,
+									suppose you want created page to be serve on the route
+									http://localhost:3000/newPage . To access this page
+									define its routes in the <code>routeservice -&gt; index.jsx</code> file.</p>
+								<div class="prism-show-language"></div>
+								<pre
+									class=" mb-1 language-php"><code class>
+import React from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import NewPage  from './newPage';
+const NewRoute = () => (
+   <span><</span><span>Switch</span><span>></span>
+      <span><</span><span>Route path="/new-page" component={NewPage}</span> <span>/></span>
+   <span><</span><span>/Switch</span><span>></span>
+);
+export default NewRoute;
+				  </code></pre>
+								<p>
+									After completing these above steps you need to run the command
+									<code>npm run dev</code> or
+									<code>npm start</code> command in the project directory.It will serve your app on the localhost.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<section id="requirements">
+					<h3>Requirements</h3>
+					<ul class="mt-3">
+						<li><a href="https://reactjs.org/">React</a> &gt;= ^16.13.1</li>
+						<li>Node js Package</li>
+						<li>Yarn package (Optional)</li>
+						<li><a href="https://code.visualstudio.com/download">Visual Studio Code</a></li>
+						<li>Terminal</li>
+					</ul>
+				</section>
+				
+				<section id="styles">
+					<h3>Styles</h3>
+<pre><code>&lt;link rel="stylesheet" href="public/plugins/datatables/datatables.min.css"&gt;
+&lt;link rel="stylesheet" href="public/plugins/jvectormap/jquery-jvectormap-2.0.3.css"&gt;
+</code></pre>
+					<p>We have used this stylesheet for datatable and vector map styling.</p>
+				</section>
+				<section id="scripts">
+					<h3>Javascripts</h3>
+&lt;script src="Assets/js/app.js"&gt;&lt;/script&gt;
+</code></pre>
+<p>We have used this javascript for this template. You can customize the app.js</p>
+				</section>
+				<section id="file_structure">
+					<h3>File Structure</h3>
+					<p>Extract the zip file you received after purchase and you would find the exact below files and folders:</p>
+<pre>kanakkureact-internal/
+		├── build
+	├── node_modules
+	├── public
+	|   ├── plugins
+	│   │   ├── datatables
+	│   │   ├── jvectormap
+	|   ├── favicon.png
+	|   ├── index.html
+	├── src
+	│   ├── application (Application menu pages)
+	│   ├── assets
+	│   │   ├── css
+	│   │   ├── fonts
+	│   │   ├── img
+	│   │   ├── plugins
+	|   ├── authentication (Authentication menu pages)
+	|   ├── blankpage (Blank page menu pages)
+	|   ├── components (Components menu pages)
+	|   ├── customers (Customers menu pages)
+	|   ├── dashboard (Dashboard menu pages)
+	|   ├── errorpages (Error Pages menu pages)
+	|   ├── estimates (Estimates menu pages)
+	|   ├── expenses (Expenses menu pages)
+	|   ├── forms (Forms menu pages)
+	|   ├── invoices (Invoices menu pages)
+	|   ├── json (JSON data for tables)
+	|   ├── layouts (includes Sidebar and Header)
+	|   ├── profile (Profile menu pages)
+	|   ├── payments (Payments menu pages)
+	|   ├── settings (Settings menu pages)
+	|   ├── tables (Table menu pages)
+	|   ├── users (Users menu pages)
+	|   ├── utils (Global function for datatables)
+	|   ├── vectormaps (Vector map pages)
+	│   ├── appcontainer.jsx (All Route paths)
+	│   ├── approuter.jsx (Render all routes)
+	│   ├── index.js
+	│   
+	├── .gitignore
+	├── .babelrc
+	├── package.json
+	├── webpack.config.js
+	└── README.md
+	<!-- ├── build
+	├── node_modules
+	├── public
+	│   ├── favicon.png
+	│   ├── index.html
+	├── src
+	│   ├── assets
+	│   │   └──images
+	│   │      └── logo.png
+	│   ├── components
+	│   │   └── app
+	│   │       ├── App.css
+	│   │       ├── App.js
+	│   │       └── App.test.js
+	│   ├── utilities
+	│   ├── Index.css
+	│   ├── Index.js
+	│   └── service-worker.js
+	├── .gitignore
+	├── .babelrc
+	├── package.json
+	├── webpack.config.js
+	└── README.md -->
+  
+</pre>
+				</section>
+				<section id="credits">
+					<h3>Credits</h3>
+					<p>We've used the following resources as listed. These are some awesome creation and we are thankful to the community.</p>
+					<ul>
+						<li><a target="_blank" href="http://getbootstrap.com/">Bootstrap</a></li>
+						<li><a target="_blank" href="https://jquery.com/">Jquery</a></li>
+						<li><a target="_blank" href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a></li>
+						<li><a target="_blank" href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a></li>
+					    <li><a target="_blank" href="https://www.npmjs.com/package/fullcalendar">Fullcalendar</a></li>
+						<li><a target="_blank" href="https://www.npmjs.com/package/react-chartjs-2">React-chartjs-2</a></li>
+						<li><a target="_blank" href="https://www.npmjs.com/package/react-custom-scrollbars">React-custom-scrollbars</a></li>
+						<li><a target="_blank" href="https://www.npmjs.com/package/react-customizable-progressbar">React-customizable-progressbar</a></li>
+						<li><a target="_blank" href="https://www.npmjs.com/package/react-date-range">React-date-range</a></li>
+						<li><a target="_blank" href="https://github.com/Eonasdan/bootstrap-datetimepicker">Date Timepicker</a></li>
+						<li><a target="_blank" href="http://www.google.com/fonts">Google Fonts</a></li>
+						<li><a target="_blank" href="https://www.npmjs.com/package/react-datepicker">React-datepicker</a></li>
+						<li><a target="_blank" href="https://www.npmjs.com/package/react-select">React-Select</a></li>
+					   <li><a target="_blank" href="https://ant.design/docs/react/introduce">Data Table</a></li>
+						<li><a target="_blank" href="https://fullcalendar.io/docs/getting-started">Calendar</a></li>
+					</ul>
+				</section>
+				<section id="changelog">
+					<h3 class="mb-3">Change Log</h3>
+					<div>
+						<h5>
+							<span class="text-primary">16.13.1</span>
+							<span class="sub-header"> - March 19, 2020 </span>
+						</h5>
+						<ul class="changlog-list">
+							<li>
+								React DOM
+							</li>
+						</ul>
+
+					</div>
+				</section>
+				<section id="support" class="mb-0">
+					<h3>Support</h3>
+					<p class="mb-0">If you have any queries please contact us through email: <strong>business@dreamguys.co.in</strong>
+					</p>
+				</section>
+			</div>
+		</div>
+	</div>
+	<script src="assets/js/jquery-3.5.0.min.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/script.js"></script>
+</body>
+
+</html>

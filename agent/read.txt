@@ -1,0 +1,26 @@
+for model enhancement:  https://codeigniter.com/user_guide/models/model.html
+For validation: https://codeigniter4.github.io/userguide/libraries/validation.html#setting-validation-rules
+
+
+For maps
+https://developers.google.com/maps/documentation/javascript/get-api-key
+Venera: AIzaSyA1Yzl14YztiV82v8qBu7V_fswumv5-xMU
+Sapp: AIzaSyAKx3DR9sicrZ-ruthKe5GgtvfxphX8NL4
+
+sudo apt-get install wkhtmltopdf
+wkhtmltopdf https://sapp.canopuz.com/lib/print report.pdf
+
+
+$query = $this->data["db"]->getLastQuery();
+echo (string)$query;die;
+
+
+ALTER TABLE monthly_progress_purchase_farmer_income DROP FOREIGN KEY monthly_progress_purchase_farmer_income_ibfk_1;
+ALTER TABLE monthly_progress_purchase_farmer_income ADD CONSTRAINT monthly_progress_purchase_farmer_income_ibfk_1 FOREIGN KEY (monthly_progress_id) REFERENCES monthly_progress_report(id);
+
+
+$output = preg_replace_callback('/([.!?])\s*(\w)/', function ($matches) {
+    return strtoupper($matches[1] . ' ' . $matches[2]);
+}, ucfirst(strtolower($input)));
+
+$userModel->purgeDeleted();
