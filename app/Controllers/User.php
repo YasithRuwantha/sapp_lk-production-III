@@ -684,7 +684,18 @@ class User extends BaseController
 
         $query = $this->data["db"]->query("SELECT * FROM user_group WHERE id != 3");
         $this->data['user_group'] = $query->getResultArray();
-        $this->data['gnd_list'] = $gnd_model->findAll();
+        
+        // Load district data
+        $district_query = $this->data["db"]->query("SELECT id, district FROM district ORDER BY district");
+        $this->data['district_list'] = $district_query->getResultArray();
+        
+        // Load DSD data
+        $dsd_query = $this->data["db"]->query("SELECT id, dsd, district_id FROM dsd ORDER BY dsd");
+        $this->data['dsd_list'] = $dsd_query->getResultArray();
+        
+        // Load GND data with dsd_id for filtering
+        $gnd_query = $this->data["db"]->query("SELECT id, gnd, dsd_id FROM gnd ORDER BY gnd");
+        $this->data['gnd_list'] = $gnd_query->getResultArray();
         $this->data['agg_list'] = $agg_model->findAll();
 
         return view('user/add_edit', $this->data);
@@ -799,6 +810,8 @@ class User extends BaseController
                     $this->data['details_farmer'] = [
                         'gnd_id' => $this->request->getVar('gnd_id')?:14077,
                         'aggrarian_division_id' => $this->request->getVar('aggrarian_division_id')?:358,
+                        'district_id' => $this->request->getVar('district_id'),
+                        'dsd_id' => $this->request->getVar('dsd_id'),
                         'user_id' => $this->data['id'],
                     ];
 
@@ -861,6 +874,8 @@ class User extends BaseController
                         $this->data['details_farmer'] = [
                             'gnd_id' => $this->request->getVar('gnd_id')?:14077,
                             'aggrarian_division_id' => $this->request->getVar('aggrarian_division_id')?:358,
+                            'district_id' => $this->request->getVar('district_id'),
+                            'dsd_id' => $this->request->getVar('dsd_id'),
                         ];
 
                         $farmer_model->update($farmer['id'], $this->data['details_farmer']);

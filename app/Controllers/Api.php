@@ -125,4 +125,24 @@ class Api extends BaseController
         ]);
 
     }
+
+    public function get_dsd_by_district()
+    {
+        $district_id = $this->request->getPost('district_id');
+        
+        if(!$district_id){
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'District ID is required'
+            ]);
+        }
+
+        $query = $this->data["db"]->query("SELECT id, dsd FROM dsd WHERE district_id = ? ORDER BY dsd", [$district_id]);
+        $dsds = $query->getResultArray();
+
+        return $this->response->setJSON([
+            'status' => 'success',
+            'data' => $dsds
+        ]);
+    }
 }

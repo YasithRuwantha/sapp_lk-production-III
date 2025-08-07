@@ -132,6 +132,11 @@
                                     ?>
 									<form method="post" action="<?php echo base_url("/user/add_edit/" . $id); ?><?php if(isset($record["user_type"]) && $record["user_type"]==2){ echo "?user_type=2"; } ?>" enctype="multipart/form-data">
                                         <input name="csrf" value="<?php echo $csrf; ?>" type="hidden">
+                                        <?php if(isset($_GET['user_type']) && $_GET['user_type']==2){ ?>
+                                        <input name="user_type" value="2" type="hidden">
+                                        <?php } elseif(isset($record["user_type"])){ ?>
+                                        <input name="user_type" value="<?php echo $record["user_type"]; ?>" type="hidden">
+                                        <?php } ?>
                                         <div class="row form-group">
                                             <label for="profile" class="col-sm-3 col-form-label input-label">Profile picture</label>
 											<div class="col-sm-9">
@@ -319,18 +324,59 @@
 										<?php } ?>
 
 										<?php 
-										if(isset($record["user_type"]) && $record["user_type"]==2){
+										if((isset($record["user_type"]) && $record["user_type"]==2) || (isset($_GET['user_type']) && $_GET['user_type']==2)){
 										?>
+										<!-- District Field -->
+										<div class="row form-group">
+											<label for="field-label-<?php echo $inc; ?>" class="col-sm-3 col-form-label input-label">District</label>
+											<div class="col-sm-9">
+                                                <?php $field_name = "district_id"; ?>
+												<select class="form-select district-select<?php if($validation->hasError($field_name)){ ?> is-invalid<?php } ?>" id="district-select" name="<?php echo $field_name; ?>">
+													<?php if(!isset($record[$field_name]) || empty($record[$field_name])){ ?>
+														<option value="">-- Select District --</option>
+													<?php } ?>
+                                                    <?php if(isset($district_list)){ foreach($district_list as $key=>$val){ ?>
+                                                        <option <?php if(isset($record[$field_name]) && $val['id'] == $record[$field_name]){ ?>selected<?php } ?> value="<?php echo $val['id']; ?>"><?php echo $val['district']; ?></option>
+													<?php }} ?>
+												</select>
+                                                <?php if($validation->hasError($field_name)){ ?>
+                                                <div class="invalid-feedback"><?php echo $validation->getError($field_name); ?></div>
+                                                <?php } ?>
+											</div>
+										</div>
+
+										<!-- DSD Field -->
+										<div class="row form-group">
+											<label for="field-label-<?php echo $inc; ?>" class="col-sm-3 col-form-label input-label">DSD</label>
+											<div class="col-sm-9">
+                                                <?php $field_name = "dsd_id"; ?>
+												<select class="form-select dsd-select<?php if($validation->hasError($field_name)){ ?> is-invalid<?php } ?>" id="dsd-select" name="<?php echo $field_name; ?>">
+													<option value="">-- Select DSD --</option>
+													<?php if(isset($record[$field_name]) && !empty($record[$field_name]) && isset($dsd_list)){ 
+														foreach($dsd_list as $key=>$val){ 
+															if((isset($record['district_id']) && $val['district_id'] == $record['district_id']) || !isset($record['district_id'])){ ?>
+																<option <?php if($val['id'] == $record[$field_name]){ ?>selected<?php } ?> value="<?php echo $val['id']; ?>"><?php echo $val['dsd']; ?></option>
+															<?php }
+														}
+													} ?>
+												</select>
+                                                <?php if($validation->hasError($field_name)){ ?>
+                                                <div class="invalid-feedback"><?php echo $validation->getError($field_name); ?></div>
+                                                <?php } ?>
+											</div>
+										</div>
+
+										<!-- GND Field -->
 										<div class="row form-group">
 											<label for="field-label-<?php echo $inc; ?>" class="col-sm-3 col-form-label input-label">GND</label>
 											<div class="col-sm-9">
                                                 <?php $field_name = "gnd_id"; ?>
-												<select class="search-select form-select<?php if($validation->hasError($field_name)){ ?> is-invalid<?php } ?>" id="field-label-<?php echo $inc++; ?>" name="<?php echo $field_name; ?>">
+												<select class="search-select form-select gnd-select<?php if($validation->hasError($field_name)){ ?> is-invalid<?php } ?>" id="gnd-select" name="<?php echo $field_name; ?>">
 													<?php if(!isset($record[$field_name]) || empty($record[$field_name])){ ?>
-														<option value="">-- Select --</option>
+														<option value="">-- Select GND --</option>
 													<?php } ?>
                                                     <?php foreach($gnd_list as $key=>$val){ ?>
-                                                        <option class="entity" <?php if(isset($record[$field_name]) && $val['id'] == $record[$field_name]){ ?>selected<?php } ?> value="<?php echo $val['id']; ?>"><?php echo $val['gnd']; ?></option>
+                                                        <option class="entity gnd-option" data-dsd-id="<?php echo $val['dsd_id']; ?>" <?php if(isset($record[$field_name]) && $val['id'] == $record[$field_name]){ ?>selected<?php } ?> value="<?php echo $val['id']; ?>"><?php echo $val['gnd']; ?></option>
 													<?php } ?>
 												</select>
                                                 <?php if($validation->hasError($field_name)){ ?>
@@ -459,6 +505,89 @@
 					$('#farmer-meta').hide();
 					$('#farmer-approvals').hide();
 				}
+
+				// Store original GND options for filtering
+				var originalGndOptions = $('#gnd-select option').clone();
+
+				// District change event - load DSDs
+				$('#district-select').change(function(){
+					var district_id = $(this).val();
+					var dsd_select = $('#dsd-select');
+					var gnd_select = $('#gnd-select');
+					
+					// Clear DSD dropdown
+					dsd_select.html('<option value="">-- Select DSD --</option>');
+					
+					// Reset GND dropdown to show default option only
+					gnd_select.html('<option value="">-- Select GND --</option>');
+					if(gnd_select.hasClass('select2-hidden-accessible')){
+						gnd_select.select2('destroy');
+						gnd_select.select2();
+					}
+					
+					if(district_id){
+						// AJAX call to get DSDs for selected district
+						$.ajax({
+							url: '<?php echo base_url("api/get_dsd_by_district"); ?>',
+							type: 'POST',
+							data: {district_id: district_id},
+							dataType: 'json',
+							success: function(response){
+								if(response.status == 'success'){
+									$.each(response.data, function(key, value){
+										dsd_select.append('<option value="'+value.id+'">'+value.dsd+'</option>');
+									});
+								}
+							},
+							error: function(){
+								console.log('Error loading DSDs');
+							}
+						});
+					}
+				});
+
+				// DSD change event - filter GNDs
+				$('#dsd-select').change(function(){
+					var dsd_id = $(this).val();
+					var gnd_select = $('#gnd-select');
+					
+					console.log('DSD changed to:', dsd_id);
+					
+					// Clear current options
+					gnd_select.html('<option value="">-- Select GND --</option>');
+					
+					if(dsd_id){
+						console.log('Filtering GNDs for dsd_id:', dsd_id);
+						var matchCount = 0;
+						// Add matching GND options
+						originalGndOptions.each(function(){
+							var optionDsdId = $(this).attr('data-dsd-id');
+							console.log('Option:', $(this).text(), 'data-dsd-id:', optionDsdId);
+							if($(this).val() == '' || optionDsdId == dsd_id){
+								gnd_select.append($(this).clone());
+								matchCount++;
+							}
+						});
+						console.log('Found', matchCount, 'matching GNDs for dsd_id:', dsd_id);
+					} else {
+						// Show all GND options if no DSD selected
+						gnd_select.html(originalGndOptions.clone());
+					}
+					
+					// Refresh Select2 if it's initialized
+					if(gnd_select.hasClass('select2-hidden-accessible')){
+						gnd_select.select2('destroy');
+						gnd_select.select2();
+					}
+				});
+
+				// Initialize GND filtering on page load if DSD is already selected
+				setTimeout(function(){
+					var selected_dsd = $('#dsd-select').val();
+					if(selected_dsd){
+						$('#dsd-select').trigger('change');
+					}
+				}, 100);
 			});
 
 			// prevent button double click or raply click
