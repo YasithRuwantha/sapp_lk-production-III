@@ -31,6 +31,7 @@ class Doc_archive extends BaseController
         track();
     }
 
+    
     public function list_all()
 	{
         auth_rd();
