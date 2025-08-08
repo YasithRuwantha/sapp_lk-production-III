@@ -326,43 +326,81 @@
 										<?php 
 										if((isset($record["user_type"]) && $record["user_type"]==2) || (isset($_GET['user_type']) && $_GET['user_type']==2)){
 										?>
+
 										<!-- District Field -->
 										<div class="row form-group">
 											<label for="field-label-<?php echo $inc; ?>" class="col-sm-3 col-form-label input-label">District</label>
 											<div class="col-sm-9">
-                                                <?php $field_name = "district_id"; ?>
-												<select class="form-select district-select<?php if($validation->hasError($field_name)){ ?> is-invalid<?php } ?>" id="district-select" name="<?php echo $field_name; ?>">
-													<?php if(!isset($record[$field_name]) || empty($record[$field_name])){ ?>
-														<option value="">-- Select District --</option>
+												<?php $field_name = "district_id"; ?>
+												<?php if(isset($_GET['mode']) && $_GET['mode'] == 'view'){ ?>
+													
+													<p class="form-control-plaintext">
+														<?php 
+														$district_name = '';
+														if(isset($record[$field_name]) && isset($farmer_district_list)){
+															foreach($farmer_district_list as $d){
+																if((string)$d['id'] === (string)$record[$field_name]){
+																	$district_name = $d['district'];
+																	break;
+																}
+															}
+														}
+														echo $district_name ? $district_name : '-';
+														?>
+													</p>
+												<?php } else { ?>
+													<select class="form-select district-select<?php if($validation->hasError($field_name)){ ?> is-invalid<?php } ?>" id="district-select" name="<?php echo $field_name; ?>">
+														<?php if(!isset($record[$field_name]) || empty($record[$field_name])){ ?>
+															<option value="">-- Select District --</option>
+														<?php } ?>
+														<?php if(isset($farmer_district_list)){ foreach($farmer_district_list as $key=>$val){ ?>
+															<option <?php if(isset($record[$field_name]) && $val['id'] == $record[$field_name]){ ?>selected<?php } ?> value="<?php echo $val['id']; ?>"><?php echo $val['district']; ?></option>
+														<?php }} ?>
+													</select>
+													<?php if($validation->hasError($field_name)){ ?>
+													<div class="invalid-feedback"><?php echo $validation->getError($field_name); ?></div>
 													<?php } ?>
-                                                    <?php if(isset($district_list)){ foreach($district_list as $key=>$val){ ?>
-                                                        <option <?php if(isset($record[$field_name]) && $val['id'] == $record[$field_name]){ ?>selected<?php } ?> value="<?php echo $val['id']; ?>"><?php echo $val['district']; ?></option>
-													<?php }} ?>
-												</select>
-                                                <?php if($validation->hasError($field_name)){ ?>
-                                                <div class="invalid-feedback"><?php echo $validation->getError($field_name); ?></div>
-                                                <?php } ?>
+												<?php } ?>
 											</div>
 										</div>
+
 
 										<!-- DSD Field -->
 										<div class="row form-group">
 											<label for="field-label-<?php echo $inc; ?>" class="col-sm-3 col-form-label input-label">DSD</label>
 											<div class="col-sm-9">
-                                                <?php $field_name = "dsd_id"; ?>
-												<select class="form-select dsd-select<?php if($validation->hasError($field_name)){ ?> is-invalid<?php } ?>" id="dsd-select" name="<?php echo $field_name; ?>">
-													<option value="">-- Select DSD --</option>
-													<?php if(isset($record[$field_name]) && !empty($record[$field_name]) && isset($dsd_list)){ 
-														foreach($dsd_list as $key=>$val){ 
-															if((isset($record['district_id']) && $val['district_id'] == $record['district_id']) || !isset($record['district_id'])){ ?>
-																<option <?php if($val['id'] == $record[$field_name]){ ?>selected<?php } ?> value="<?php echo $val['id']; ?>"><?php echo $val['dsd']; ?></option>
-															<?php }
+												<?php $field_name = "dsd_id"; ?>
+												<?php if(isset($_GET['mode']) && $_GET['mode'] == 'view'){ ?>
+													
+													<p class="form-control-plaintext">
+														<?php 
+														$dsd_name = '';
+														if(isset($record[$field_name]) && isset($farmer_dsd_list)){
+															foreach($farmer_dsd_list as $d){
+																if((string)$d['id'] === (string)$record[$field_name]){
+																	$dsd_name = $d['dsd'];
+																	break;
+																}
+															}
 														}
-													} ?>
-												</select>
-                                                <?php if($validation->hasError($field_name)){ ?>
-                                                <div class="invalid-feedback"><?php echo $validation->getError($field_name); ?></div>
-                                                <?php } ?>
+														echo $dsd_name ? $dsd_name : '-';
+														?>
+													</p>
+												<?php } else { ?>
+													<select class="form-select dsd-select<?php if($validation->hasError($field_name)){ ?> is-invalid<?php } ?>" id="dsd-select" name="<?php echo $field_name; ?>">
+														<option value="">-- Select DSD --</option>
+														<?php if(isset($record[$field_name]) && !empty($record[$field_name]) && isset($farmer_dsd_list)){
+															foreach($farmer_dsd_list as $key=>$val){
+																if((isset($record['district_id']) && $val['district_id'] == $record['district_id']) || !isset($record['district_id'])){ ?>
+																	<option <?php if($val['id'] == $record[$field_name]){ ?>selected<?php } ?> value="<?php echo $val['id']; ?>"><?php echo $val['dsd']; ?></option>
+																<?php }
+															}
+														} ?>
+													</select>
+													<?php if($validation->hasError($field_name)){ ?>
+													<div class="invalid-feedback"><?php echo $validation->getError($field_name); ?></div>
+													<?php } ?>
+												<?php } ?>
 											</div>
 										</div>
 

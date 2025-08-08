@@ -578,7 +578,7 @@ class User extends BaseController
 
         $this->data['id'] = $id;
 
-        $this->data['record'] = $entity_model->select("farmer.gnd_id,farmer.aggrarian_division_id,user.id, user.pin, user.status, user.created_on, user.fname,user.lname, user.mobile, user.email, user.gender, user.dob, user.user_type, user.language,user.profile_picture,user.password,file_registry.relative_path")
+    $this->data['record'] = $entity_model->select("farmer.gnd_id,farmer.aggrarian_division_id,farmer.district_id,farmer.dsd_id,user.id, user.pin, user.status, user.created_on, user.fname,user.lname, user.mobile, user.email, user.gender, user.dob, user.user_type, user.language,user.profile_picture,user.password,file_registry.relative_path")
             ->join('file_registry', 'file_registry.id = user.profile_picture', 'left')
             ->join('farmer', 'farmer.user_id = user.id', 'left')
             ->where("user.id = " . $id . " AND user.is_delete = 0")->first();
@@ -598,16 +598,20 @@ class User extends BaseController
                 $this->data['my_user_group'][] = $val['group_id'];
             }
         }
-
-        $query = $this->data["db"]->query("SELECT * FROM user_group WHERE id != 3");
+    // (Removed duplicate/incomplete assignment)
+    $query = $this->data["db"]->query("SELECT * FROM user_group WHERE id != 3");
         $this->data['user_group'] = $query->getResultArray();
         $this->data['gnd_list'] = $gnd_model->findAll();
         $this->data['agg_list'] = $agg_model->findAll();
 
-        $this->data['mode'] = "view";
+    // Always provide farmer_district_list and farmer_dsd_list for the view
+    $district_query = $this->data["db"]->query("SELECT id, district FROM district ORDER BY district");
+    $this->data['farmer_district_list'] = $district_query->getResultArray();
+    $dsd_query = $this->data["db"]->query("SELECT id, dsd, district_id FROM dsd ORDER BY dsd");
+    $this->data['farmer_dsd_list'] = $dsd_query->getResultArray();
 
-
-        return view('user/add_edit', $this->data);
+    $this->data['mode'] = "view";
+    return view('user/add_edit', $this->data);
     }
 
     public function add_edit($id = 0)
@@ -685,13 +689,13 @@ class User extends BaseController
         $query = $this->data["db"]->query("SELECT * FROM user_group WHERE id != 3");
         $this->data['user_group'] = $query->getResultArray();
         
-        // Load district data
-        $district_query = $this->data["db"]->query("SELECT id, district FROM district ORDER BY district");
-        $this->data['district_list'] = $district_query->getResultArray();
+    // Load district data (for farmer context, use unique variable names)
+    $district_query = $this->data["db"]->query("SELECT id, district FROM district ORDER BY district");
+    $this->data['farmer_district_list'] = $district_query->getResultArray();
         
-        // Load DSD data
-        $dsd_query = $this->data["db"]->query("SELECT id, dsd, district_id FROM dsd ORDER BY dsd");
-        $this->data['dsd_list'] = $dsd_query->getResultArray();
+    // Load DSD data (for farmer context, use unique variable names)
+    $dsd_query = $this->data["db"]->query("SELECT id, dsd, district_id FROM dsd ORDER BY dsd");
+    $this->data['farmer_dsd_list'] = $dsd_query->getResultArray();
         
         // Load GND data with dsd_id for filtering
         $gnd_query = $this->data["db"]->query("SELECT id, gnd, dsd_id FROM gnd ORDER BY gnd");
@@ -806,14 +810,15 @@ class User extends BaseController
                 if ($id == 0) {
                     $entity_model->insert($this->data['details']);
                     $this->data['id'] = $entity_model->getInsertID();
-
-                    $this->data['details_farmer'] = [
-                        'gnd_id' => $this->request->getVar('gnd_id')?:14077,
-                        'aggrarian_division_id' => $this->request->getVar('aggrarian_division_id')?:358,
-                        'district_id' => $this->request->getVar('district_id'),
-                        'dsd_id' => $this->request->getVar('dsd_id'),
-                        'user_id' => $this->data['id'],
-                    ];
+                        $this->data['record'] = $entity_model->select("farmer.gnd_id,farmer.aggrarian_division_id,farmer.district_id,farmer.dsd_id,user.id, user.pin, user.status, user.created_on, user.fname,user.lname, user.mobile, user.email, user.gender, user.dob, user.user_type, user.language,user.profile_picture,user.password,file_registry.relative_path")
+                            ->join('file_registry', 'file_registry.id = user.profile_picture', 'left')
+                            ->join('farmer', 'farmer.user_id = user.id', 'left')
+                            ->where("user.id = " . $id . " AND user.is_delete = 0")->first();
+                        $this->data['details_farmer'] = [
+                            'district_id' => $this->request->getVar('district_id'),
+                            'dsd_id' => $this->request->getVar('dsd_id'),
+                            'user_id' => $this->data['id'],
+                        ];
 
                     $farmer_model->insert($this->data['details_farmer']);
 
