@@ -728,13 +728,37 @@ class User extends BaseController
             $email = $this->request->getVar('pin') . "@mis-sapp.com";
         }
 
+
         if (isset($_POST['csrf'])) {
             $validation->setRules($this->validation_rules_entity_add_edit($id));
 
-            if (!empty($this->request->getVar('pin'))) {
-                $nic_validate_response = nic_parse(strtoupper($this->request->getVar('pin')));
+            $input_pin = strtoupper($this->request->getVar('pin'));
+            $nic_validate_response = !empty($input_pin) ? nic_parse($input_pin) : false;
+            if (!empty($input_pin)) {
                 if ($nic_validate_response == false) {
                     $this->data['validation']->setError('pin', 'Invalid NIC Format');
+                } else {
+                    // Enhanced duplicate check for both old and new NIC formats
+                    $old_nic = isset($nic_validate_response['old_nic']) ? $nic_validate_response['old_nic'] : null;
+                    $new_nic = isset($nic_validate_response['new_nic']) ? $nic_validate_response['new_nic'] : null;
+                    $db = \Config\Database::connect();
+                    $builder = $db->table('user');
+                    $builder->select('id');
+                    $builder->where('is_delete', 0);
+                    if ($id > 0) {
+                        $builder->where('id !=', $id);
+                    }
+                    $builder->groupStart();
+                    if ($old_nic && $new_nic) {
+                        $builder->where('pin', $old_nic)->orWhere('pin', $new_nic);
+                    } else {
+                        $builder->where('pin', $input_pin);
+                    }
+                    $builder->groupEnd();
+                    $duplicate = $builder->get()->getRowArray();
+                    if ($duplicate) {
+                        $this->data['validation']->setError('pin', 'NIC already exists (duplicate in old or new format)');
+                    }
                 }
             }
 
